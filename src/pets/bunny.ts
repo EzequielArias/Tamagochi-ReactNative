@@ -24,19 +24,19 @@ const happyBunny = `
 
 export const bunnyStates = [
     {
-        state : "sad",
+        mood : "sad",
         tamagochi : sadBunny
     },
     {
-        state : "surprised",
+        mood : "surprised",
         tamagochi : surprisedBunny
     },
     {
-        state : "happy",
+        mood : "happy",
         tamagochi : happyBunny
     },
     {
-      state : "normal",
+      mood : "normal",
       tamagochi : normalBunny
     }
 ]

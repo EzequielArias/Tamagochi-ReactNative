@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { ScrollView, Text } from 'react-native';
 import AppRouter from './router/AppRouter';
+import { StatsProvider } from './utils/stats.context';
 
 const App = () => {
 
   return (
+    <StatsProvider>
       <AppRouter/>
+    </StatsProvider>
   )
 }
 
