@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     },
 
     text : {
-        fontSize : 25,
+        fontSize : 45,
         fontFamily :"Montserrat",
         fontWeight : "bold",
         padding : 15,

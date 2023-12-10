@@ -20,21 +20,24 @@ const happyCat = `
 ( o.o ) 
  > ^ <`
 
-export const catStates = [
-    {
-        mood : "normal",
-        tamagochi : normalCat
-    },
-    {
-        mood : "surprised",
-        tamagochi : surprisedCat
-    },
-    {
-        mood : "sad",
-        tamagochi : sadCat
-    },
-    {
-        mood : "happy",
-        tamagochi : happyCat
-    }
-]
+export const catStates = {
+    pet : "Cat",
+    states : [
+        {
+            mood : "normal",
+            tamagochi : normalCat
+        },
+        {
+            mood : "surprised",
+            tamagochi : surprisedCat
+        },
+        {
+            mood : "sad",
+            tamagochi : sadCat
+        },
+        {
+            mood : "happy",
+            tamagochi : happyCat
+        }
+    ]
+}

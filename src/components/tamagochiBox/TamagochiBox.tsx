@@ -5,52 +5,56 @@ import { useStats } from '../../utils/stats.context'
 import { bunnyStates, catStates } from '../../pets'
 
 //helpersxd
-const petsStack = [bunnyStates.find((p) => p.mood === "normal"), catStates.find((p) => p.mood === "normal")]
+const petsStack = [{ pet : bunnyStates.pet, state : bunnyStates.states.find((p) => p.mood === "normal")}, { pet : catStates.pet, state : catStates.states.find((p) => p.mood === "normal")}]
 
 const TamagochiBox = () => {
 
-  const { tamagoshi } = useStats();
+  const { handleTamagoshi, setPetData, isAlive } = useStats();
 
-  const [ pets, setpets ] = React.useState(petsStack.map(p => p?.tamagochi))
+  const [ pets ] = React.useState(petsStack)
   const [ index, setIndex ] = React.useState(0)
 
   const handleLeft = () => setIndex((i) => i - 1 < 0 ? pets.length - 1 : i - 1)
   const handleRight = () => setIndex((i) => i + 1 > pets.length - 1 ? 0 : i + 1)
 
+  React.useEffect(() => {
+    handleTamagoshi(pets[index].pet)
+    setPetData(pets[index])
+  },[index])
 
   return (
     <>
         <View style={styles.tamagochiContainer}>
-            {
-              tamagoshi ? 
-              (
-                <>
-                  <Text>{tamagoshi}</Text>
-                </>
-              )
-              :
-              (
-                <View style={styles.btnContainer}>
-                 <Text style={styles.text}>{pets[index]}</Text>
-                 <View style={{ display : "flex", width : "100%", flexDirection : "row" }}>
-                  <View style={styles.btnWrapper}>
-                    <Button
-                    title='Anterior'
-                    color="black"
-                    onPress={handleLeft}
-                    />
-                  </View>
-                  <View style={styles.btnWrapper}>
-                    <Button
-                    title='Siguiente'
-                    color="black"
-                    onPress={handleRight}
-                    />
-                  </View>
-                 </View>
-                </View>
-              )
-            }
+                { 
+                  isAlive 
+                  ? 
+                  (
+                  <Text>Ya seleccionamos personaje</Text>
+                  ) 
+                  : 
+                  (
+                    <View style={styles.btnContainer}>
+                    <Text style={styles.text} >{pets[index]?.pet}</Text>
+                    <Text style={styles.text}>{pets[index]?.state?.tamagochi}</Text>
+                    <View style={{ display : "flex", width : "100%", flexDirection : "row" }}>
+                      <View style={styles.btnWrapper}>
+                        <Button
+                        title='Anterior'
+                        color="black"
+                        onPress={handleLeft}
+                        />
+                      </View>
+                      <View style={styles.btnWrapper}>
+                        <Button
+                        title='Siguiente'
+                        color="black"
+                        onPress={handleRight}
+                        />
+                      </View>
+                    </View>
+                    </View>
+                  )
+                }
         </View>
     </>
   )

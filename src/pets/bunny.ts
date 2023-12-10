@@ -22,7 +22,9 @@ const happyBunny = `
   o_(")(")
 `;
 
-export const bunnyStates = [
+export const bunnyStates = {
+  pet : "Bunny",
+  states : [
     {
         mood : "sad",
         tamagochi : sadBunny
@@ -40,3 +42,4 @@ export const bunnyStates = [
       tamagochi : normalBunny
     }
 ]
+}
