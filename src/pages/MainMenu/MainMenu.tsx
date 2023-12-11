@@ -12,7 +12,7 @@ export const MainMenu = () => {
 
   const linkTo = useLinkTo()
 
-  const { manageLive, handleName, handleTamagoshi, tamagoshi } = useStats();
+  const { manageLive, handleName, handleTamagoshi, tamagoshi, changeMood } = useStats();
 
   const [ modal, setModal ] = React.useState(false);
   const [ petName, setPetName ] = React.useState("");
@@ -22,6 +22,7 @@ export const MainMenu = () => {
   const startGame = () => {
     handleName(petName);
     manageLive(true);
+    changeMood("normal")
     Vibration.vibrate(200);
     setModal(false);
     linkTo("/Game");

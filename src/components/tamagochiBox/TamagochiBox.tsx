@@ -19,7 +19,6 @@ const TamagochiBox = () => {
 
   handleTamagoshi(pets[index].state?.tamagochi as any)
   setPetData(pets[index])
-  changeMood("normal")
 
   return (
     <>

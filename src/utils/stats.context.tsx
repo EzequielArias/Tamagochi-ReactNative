@@ -26,6 +26,7 @@ interface ITamagochiStats {
     handleName: (name: string) => void;
     setPetData : React.Dispatch<React.SetStateAction<IPetData>>
     playWithPet : (points: number) => void;
+    setMood : any
 }
 
 interface StatsProviderProps {
@@ -48,7 +49,7 @@ export const StatsProvider : React.FC<StatsProviderProps> = ({ children }) => {
     const [ mood, setMood ] = React.useState("");
     const [ name, setName ] = React.useState("");
     const [ petData, setPetData ] = React.useState({} as any);
-
+    console.log(`EL tamagoshi del context es \n ${tamagoshi}`)
     const feedPet = ( meal : number ) =>  setHungry(prev => prev + meal > 100 ? 100 : prev + meal);
 
     const manageLive = ( b : boolean ) => setAlive(b);
@@ -83,7 +84,8 @@ export const StatsProvider : React.FC<StatsProviderProps> = ({ children }) => {
             handleTamagoshi,
             handleName,
             setPetData,
-            playWithPet
+            playWithPet,
+            setMood
            }}>
             { children }
         </StatsContext.Provider>

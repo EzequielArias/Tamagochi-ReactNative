@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react'
 import { Text, TextInput, View, Animated, Easing, Button } from 'react-native'
 import { styles } from './Hud'
 import { useStats } from '../../utils/stats.context'
+import { bunnyStates, catStates  } from '../../pets'
+
+const data = [bunnyStates,catStates]
 
 const HUDbars = ({ filled } : { filled : number}) => {
 
@@ -41,17 +44,17 @@ const HUDbars = ({ filled } : { filled : number}) => {
 
 const Hud = () => {
 
-  const { life, hungry, state, handlePetLife, feedPet, playWithPet  } = useStats();
+  const { life, hungry, state , feedPet, playWithPet, petState, handlePetLife, mood, changeMood, handleTamagoshi, petData } = useStats();
 
-  React.useEffect(() => {
-    setInterval(() => {
-      handlePetLife(1)
-    },5000)
-  },[])
+  const feedBtn = () => feedPet(10);
 
-  const feedBtn = () => feedPet(2);
+  const playBtn = () => playWithPet(10)
 
-  const playBtn = () => playWithPet(2)
+  const execute = () => {
+    const tama = data.find((el) => el.pet === petData.pet)?.states.find((el) => el.mood === mood)!
+    changeMood("sad")
+    handleTamagoshi(tama.tamagochi)
+  }
 
   return (
     <>
@@ -77,7 +80,7 @@ const Hud = () => {
           </View>
 
           <View style={styles.eachBtn}>
-            <Button title='Alimentar' color={"black"}/>
+            <Button title='Ejecutar' color={"black"} onPress={execute}/>
           </View>
 
           <View style={styles.eachBtn}>
