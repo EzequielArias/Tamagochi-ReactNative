@@ -25,6 +25,7 @@ interface ITamagochiStats {
     handleTamagoshi: (name: string) => void;
     handleName: (name: string) => void;
     setPetData : React.Dispatch<React.SetStateAction<IPetData>>
+    playWithPet : (points: number) => void;
 }
 
 interface StatsProviderProps {
@@ -34,7 +35,6 @@ interface StatsProviderProps {
 
 const StatsContext = React.createContext<ITamagochiStats>(null!);
 
-
 export const useStats = () => React.useContext(StatsContext);
 
 export const StatsProvider : React.FC<StatsProviderProps> = ({ children }) => {
@@ -42,14 +42,14 @@ export const StatsProvider : React.FC<StatsProviderProps> = ({ children }) => {
     const [ tamagoshi, setTamagoshi ] = React.useState("");
 
     const [ life, setLife ] = React.useState(100);
-    const [ state, setState ] = React.useState(100);
-    const [ hungry, setHungry ] = React.useState(100);
+    const [ state, setState ] = React.useState(50);
+    const [ hungry, setHungry ] = React.useState(50);
     const [ isAlive, setAlive ] = React.useState(false);
     const [ mood, setMood ] = React.useState("");
     const [ name, setName ] = React.useState("");
     const [ petData, setPetData ] = React.useState({} as any);
 
-    const feedPet = ( meal : number ) =>  setHungry(prev => prev + meal);
+    const feedPet = ( meal : number ) =>  setHungry(prev => prev + meal > 100 ? 100 : prev + meal);
 
     const manageLive = ( b : boolean ) => setAlive(b);
     
@@ -62,6 +62,8 @@ export const StatsProvider : React.FC<StatsProviderProps> = ({ children }) => {
     const handleTamagoshi = ( name : string ) => setTamagoshi( name );
 
     const handleName = ( name : string ) => setName( name );
+
+    const playWithPet = ( points : number ) => setState(prev => prev + points > 100 ? 100 : prev + points );
 
     return (
         <StatsContext.Provider value={{ 
@@ -80,7 +82,8 @@ export const StatsProvider : React.FC<StatsProviderProps> = ({ children }) => {
             changeMood,
             handleTamagoshi,
             handleName,
-            setPetData
+            setPetData,
+            playWithPet
            }}>
             { children }
         </StatsContext.Provider>

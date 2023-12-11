@@ -3,7 +3,6 @@ import { View, Text, Button } from 'react-native'
 import { styles } from './tamagochiBox'
 import { useStats } from '../../utils/stats.context'
 import { bunnyStates, catStates } from '../../pets'
-import Room from '../room/Room'
 
 //helpersxd
 const petsStack = [{ pet : bunnyStates.pet, state : bunnyStates.states.find((p) => p.mood === "normal")}, { pet : catStates.pet, state : catStates.states.find((p) => p.mood === "normal")}]
@@ -12,8 +11,8 @@ const TamagochiBox = () => {
 
   const { handleTamagoshi, setPetData, changeMood } = useStats();
 
-  const [ pets ] = React.useState(petsStack)
-  const [ index, setIndex ] = React.useState(0)
+  const [ pets ] = React.useState(petsStack);
+  const [ index, setIndex ] = React.useState(0);
 
   const handleLeft = () => setIndex((i) => i - 1 < 0 ? pets.length - 1 : i - 1)
   const handleRight = () => setIndex((i) => i + 1 > pets.length - 1 ? 0 : i + 1)
@@ -50,4 +49,4 @@ const TamagochiBox = () => {
   )
 }
 
-export default TamagochiBox
+export default TamagochiBox;
