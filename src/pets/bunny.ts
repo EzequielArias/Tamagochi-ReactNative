@@ -2,7 +2,7 @@ const normalBunny = `
   (\\(\\  
   ( -.-)  
 o_(" ")(")
-`
+`;
 
 const sadBunny = `
   (|  (|  
@@ -23,23 +23,23 @@ const happyBunny = `
 `;
 
 export const bunnyStates = {
-  pet : "Bunny",
-  states : [
+  pet: 'Bunny',
+  states: [
     {
-        mood : "sad",
-        tamagochi : sadBunny
+      mood: 'sad',
+      tamagochi: sadBunny,
     },
     {
-        mood : "surprised",
-        tamagochi : surprisedBunny
+      mood: 'surprised',
+      tamagochi: surprisedBunny,
     },
     {
-        mood : "happy",
-        tamagochi : happyBunny
+      mood: 'happy',
+      tamagochi: happyBunny,
     },
     {
-      mood : "normal",
-      tamagochi : normalBunny
-    }
-]
-}
+      mood: 'normal',
+      tamagochi: normalBunny,
+    },
+  ],
+};

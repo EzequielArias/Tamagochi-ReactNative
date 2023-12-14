@@ -1,43 +1,43 @@
 const normalCat = `
  /)_/)  
-( o.o ) 
+( o.x ) 
  > ^ <
-`
+`;
 
 const surprisedCat = `
  /)_/)  
 ( O.O ) 
  > ^ <
-`
+`;
 
 const sadCat = `
  /)_/)  
 ( -.- ) 
  > ^ <
-`
+`;
 const happyCat = `
  /)_/)  
-( o.o ) 
- > ^ <`
+( ^.^ ) 
+ > ^ <`;
 
 export const catStates = {
-    pet : "Cat",
-    states : [
-        {
-            mood : "normal",
-            tamagochi : normalCat
-        },
-        {
-            mood : "surprised",
-            tamagochi : surprisedCat
-        },
-        {
-            mood : "sad",
-            tamagochi : sadCat
-        },
-        {
-            mood : "happy",
-            tamagochi : happyCat
-        }
-    ]
-}
+  pet: 'Cat',
+  states: [
+    {
+      mood: 'normal',
+      tamagochi: normalCat,
+    },
+    {
+      mood: 'surprised',
+      tamagochi: surprisedCat,
+    },
+    {
+      mood: 'sad',
+      tamagochi: sadCat,
+    },
+    {
+      mood: 'happy',
+      tamagochi: happyCat,
+    },
+  ],
+};
